@@ -4,11 +4,10 @@ from flask_mysqldb import MySQL
 app=Flask(__name__)
 
 app.config["MYSQL_HOST"] = "localhost"
-app.config["MYSQL_PASSWORD"] = "root"
-app.config["MYSQL_USER"] = "password"
-app.config["MYSQL_PORT"] = "3000"
-app.config["MYSQL_DB"] = "pruebaflask" #le pido que se conecte a la base de datos prueba flask
-
+app.config["MYSQL_USER"] = "root"
+app.config["MYSQL_PASSWORD"] = "password"
+app.config["MYSQL_DB"] = "prubaflask" #le pido que se conecte a la base de datos prueba flask
+#cuando pongo el puerto no anda
 mysql = MySQL(app)
 
 #en templates guardo todo lo que se ve
