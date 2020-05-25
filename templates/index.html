@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pruebla flask</title>
-    <link rel="stylesheet" href="./bootstrap.css" /> 
+    <title>prueba flask</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 
 <body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+        <p>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
 
     <form action="/add_contact" method="POST">
         <div class="form-group" style="margin: 1rem;">
@@ -25,6 +33,35 @@
         </div>
         <button type="submit" class="btn btn-primary" style="margin: 1rem;">Registrarse</button>
       </form>
+
+
+    <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Nombre Completo</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Email</th>
+                <th scope="col">Accion</th>
+            </tr>
+            </thead>
+        <tbody>
+            {% for contacto in contactos %}
+                <tr>
+                    <td>{{contacto.1}}</td>
+                    <td>{{contacto.2}}</td>
+                    <td>{{contacto.3}}</td>
+                    <td>
+                        <a href="/editar/{{contacto.0}}"><button type="button" class="btn btn-warning" >Editar</button></a>
+
+                        <a href="/borrar/{{contacto.0}}"><button type="button" class="btn btn-danger">Borrar</button></a>
+
+
+                    </td>
+                </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
 
 
 </body>
